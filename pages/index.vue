@@ -5,13 +5,9 @@ const encodedCredentials = btoa(`${username}:${password}`);
 
 const res = await useFetch("https://quiz.vilor.com/api/events/listing", {
   method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    Authorization: `Basic ${encodedCredentials}`,
-  },
+  headers: {"Authorization": "Basic " + btoa(`${username}:${password}`)},
 });
-console.log(res);
+console.log(toRaw(res.data.value)[0]);
 </script>
 
 <template>
