@@ -16,10 +16,7 @@ const getImageURL = (event) => {
 
 <template>
   <div>
-    <div class="flex flex-row justify-center gap-96 m-20">
-      <div class="bg-white">
-        fdsafadsfs
-      </div>
+    <div class="flex flex-row justify-center m-20">
       <div class="flex flex-col">
         <div v-for="event in values">
           <EventCard :event="event" :image="getImageURL(event)" />
