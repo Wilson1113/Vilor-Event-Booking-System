@@ -1,15 +1,32 @@
 <script setup>
 const username = "quiz";
 const password = "vilorfunquiz";
-const encodedCredentials = btoa(`${username}:${password}`);
 
 const res = await useFetch("https://quiz.vilor.com/api/events/listing", {
   method: "GET",
-  headers: {"Authorization": "Basic " + btoa(`${username}:${password}`)},
+  headers: { "Authorization": "Basic " + btoa(`${username}:${password}`) },
 });
-console.log(toRaw(res.data.value)[0]);
+
+const values = toRaw(res.data.value);
+
+const getImageURL = (event) => {
+  return event.img + `?random=${event.id}`
+}
 </script>
 
 <template>
-  <div>events page</div>
+  <div>
+    <div class="flex flex-row justify-center gap-96 m-20">
+      <div class="bg-white">
+        fdsafadsfs
+      </div>
+      <div class="flex flex-col">
+        <div v-for="event in values">
+          <EventCard :event="event" :image="getImageURL(event)" />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </template>
